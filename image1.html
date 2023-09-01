@@ -1,0 +1,35 @@
+<html>
+    <head></head>
+    <body>
+        <h1>image carouse</h1>
+        <img id="dd" src="" alt="">
+        <button onclick="a()">pre</button>
+        <button onclick="b()">next</button>
+        <script>
+            //image next and previcous
+            var ar=[
+            'https://tse4.mm.bing.net/th?id=OIP.xaLtOS5MQA3oRJWmxOlxcwHaEo&pid=Api&P=0&h=180',
+            'https://tse2.mm.bing.net/th?id=OIP.s2O0lUBC6HMTIWoxZcGuNAHaEo&pid=Api&P=0&h=180',
+            'https://tse3.mm.bing.net/th?id=OIP.3e29W1U3pu3BtUsAFY2HeAHaEo&pid=Api&P=0&h=180'
+            ]
+          var y=document.getElementById('dd')
+          var x=0
+          y.src=ar[x]
+          function a(){
+            if(x==0){
+                x=ar.length;   
+            }
+            x--  
+            y.src=ar[x] 
+            
+          }
+          function b(){
+            if(x==ar.length-1){
+                x=-1;
+            }
+            x++
+            y.src=ar[x]
+          }
+        </script>
+    </body>
+</html>

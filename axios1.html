@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+     </head>
+    <body>
+        <button onclick="b()">add</button>
+        <table id="t" border>
+            <th>name</th>
+            <th>website</th>
+            <th>phone</th>
+            <th>address</th>
+        </table>
+       <script>
+        var ar=[]
+          function b(){
+             axios.get('http://jsonplaceholder.typicode.com/users').
+             then(function(users){
+                console.log(users)
+                var ar=users.data
+                ar.forEach(function(u){
+                var tr=document.createElement('tr')
+                var td=document.createElement('td')
+                td.innerHTML=u.name
+                tr.appendChild(td)
+                
+                var td=document.createElement('td')
+                td.innerHTML=u.website
+                tr.appendChild(td)
+
+                var td=document.createElement('td')
+                td.innerHTML=u.phone
+                tr.appendChild(td)
+
+                var td=document.createElement('td')
+                td.innerHTML=u.address.city
+                tr.appendChild(td)
+
+                var t=document.getElementById('t')
+                t.appendChild(tr)
+                })
+             })
+          }
+       </script> 
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+        <style>
+            #u{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            #u li{
+               border: 1px solid;
+               height: 100px;
+               width: 200px;
+               margin: 10px;
+               background-color:rgb(200, 234, 222);
+               border-radius: 10px;
+               list-style: none;
+               text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="g()">add</button>
+        <ul id="u"></ul>
+        <script>
+         function g(){
+            axios.get("https://fakestoreapi.com/products").then(function(products){
+                var ar=products.data
+                console.log(products)
+                ar.forEach(function(products){
+
+                    var li=document.createElement('li')
+                   li.innerHTML=products.title
+
+                   var img=document.createElement('img')
+                    img.src=products.image
+                    img.style.height="50px"
+                    li.appendChild(img)
+                   document.getElementById('u').appendChild(li)
+                   
+                })
+            })
+         }
+        </script>
+    </body>
+</html>

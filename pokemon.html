@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <input type="text" id="d">
+    <button type="button" class="btn btn-info" onclick="g()">Info</button>
+    <div style="width: 250px;" id="dv"
+        class="bg-danger   border border-dark  m-5 px-4 pt-3 fs-4 card fw-semibold text-body-danger"></div>
+    <script>
+        function g() {
+            var ma = document.getElementById('dv')
+            var inp = document.getElementById('d').value
+            if (inp >= 1 && inp <= 10) {
+
+            }
+            else {
+                alert('invalid')
+            }
+
+
+            var dv1 = document.getElementById('dv')
+
+            dv1.innerHTML = ''
+            var x = inp
+            var str = 'https://pokeapi.co/api/v2/pokemon'
+            axios.get(`${str}/${x}`).then((pokemon) => {
+                console.log(pokemon.data)
+                var po = pokemon.data
+
+
+                var div1 = document.createElement('p')
+                var img1 = document.createElement('img')
+                img1.src = po.sprites.front_default
+                img1.style.height = '200'
+                img1.style.backgroundColor = 'blue'
+                div1.appendChild(img1)
+
+                var p1 = document.createElement('p')
+                p1.innerHTML = 'Name:' + po.forms[0].name
+                div1.appendChild(p1)
+
+                var p2 = document.createElement('p')
+                p2.innerHTML = 'Type:' + po.types[0].type.name
+                div1.appendChild(p2)
+
+                var p2 = document.createElement('p')
+                p2.innerHTML = 'Stats:' + po.stats[0].stat.name
+                div1.appendChild(p2)
+
+                var p2 = document.createElement('p')
+                p2.innerHTML = 'Ablitiy:' + po.abilities[0].ability.name
+                div1.appendChild(p2)
+
+                var p2 = document.createElement('p')
+                p2.innerHTML = 'Weight:' + po.weight
+                div1.appendChild(p2)
+                dv1.appendChild(div1)
+
+            })
+        }
+    </script>
+</body>
+
+</html>

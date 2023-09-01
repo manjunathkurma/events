@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <table border="2px solid" id="i">
+            <th>countrys</th>
+            <th>population</th>
+            <th>area</th>
+            <th>flags</th>
+        </table>
+        <button onclick="g()">submit</button>
+          <button>Order</button>
+        <script>
+          function g(){
+            $.get("https://restcountries.com/v3/all",function(country){
+                country.forEach(function (country){
+                    var tr=document.createElement('tr')
+                    var td=document.createElement('td')
+                    td.innerHTML=country.name.common
+                    tr.appendChild(td)
+                   
+                   var td =document.createElement('td')
+                   td.innerHTML=country.population
+                    tr.appendChild(td)
+
+                    var td=document.createElement('td')
+                    td.innerHTML= country.area
+                    tr.appendChild(td)
+
+                   var td=document.createElement('td')
+                   var img=document.createElement('img')
+                   img.style.width="50"
+                   img.src=country.flags[1]
+                   td.appendChild(img)
+                   tr.appendChild(td)
+
+                   var table=document.getElementById('i')
+                   table.appendChild(tr)
+
+                })
+                console.log(country)
+            })
+        }
+        </script>
+    </body>
+</html>

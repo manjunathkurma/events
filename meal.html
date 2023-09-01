@@ -1,0 +1,50 @@
+<html> 
+<head> 
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body>
+    <button onclick="g()">search</button>
+    <div id="i1"></div>
+   <script>
+      var q= document.getElementById('i1') 
+       var x=[]
+       function g(){
+        axios.get('https://www.themealdb.com/api/json/v1/1/random.php').then((meal)=>{
+          
+            x=meal.data.meals
+
+            console.log(x)
+             x.forEach((m)=>{
+               // q.innerHTML=''
+               var d1=document.createElement('div')
+               var img=document.createElement('img')
+               img.src=m.strMealThumb
+               img.style.width='200px'
+               d1.appendChild(img)  
+               q.appendChild(d1)
+
+                var d2=document.createElement('h4')
+                d2.innerHTML=m.strMeal
+                q.appendChild(d2)
+
+                var d2=document.createElement('div')
+                d2.innerHTML=m.strArea
+                q.appendChild(d2)
+
+                var d2=document.createElement('div')
+                d2.innerHTML=m.strCategory
+                q.appendChild(d2)
+
+                var d2=document.createElement('div')
+                d2.innerHTML= 'Preperation:'+m.strInstructions
+                d2.style.width='500px'
+                q.appendChild(d2)
+             })
+
+        })
+   }
+   </script>
+</body>    
+<head>

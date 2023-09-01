@@ -1,0 +1,32 @@
+<html>
+    <head></head>
+    <body>
+       <b>Add students:</b>
+        <input type="text" id="d1"><br>
+       &nbsp; <button onclick="a()">Add students</button>
+       <ul id="d2"></ul>
+
+       <h1>Enter image URL:</h1>
+       <input id="a1" type="text">
+       <button onclick="b()">Add img</button>
+       <script>
+        //display in list
+        /* var x=document.getElementById("d1")
+         var y=document.getElementById('d2')
+           function a(){
+            
+            var l=document.createElement('li')
+            l.innerHTML=x.value
+            y.appendChild(l)
+           }*/
+
+           //display image
+          function b(){
+           img=document.createElement('img')
+           img.src=document.getElementById('a1').value
+           document.body.appendChild(img)
+          }
+
+       </script>
+    </body>
+</html>

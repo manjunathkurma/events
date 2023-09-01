@@ -1,0 +1,53 @@
+<html>
+    <head>
+      <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    </head>
+    <button onclick="a()">ao</button>
+    <button onclick="b()">do</button>
+    <button onclick="g()">add</button>
+    <table border="2px" id="t">
+      <th>title</th>
+      <th>description</th>
+      <th>price</th>
+      <th>image</th>
+  </table>
+     <body>
+        <script>
+         var ar=[]
+         var t=document.getElementById('t')
+         function g(){
+            axios.get("https://fakestoreapi.com/products").
+            then(function(products)
+            {
+               console.log(products)
+               var ar=products.data
+               ar.forEach(function(p){
+                  
+                  var tr=document.createElement('tr')
+                  var td=document.createElement('td')
+                  td.innerHTML=p.title
+                  tr.appendChild(td)
+
+                  var td=document.createElement('td')
+                  td.innerHTML=p.description
+                  tr.appendChild(td)
+
+                  var td=document.createElement('td')
+                  td.innerHTML=p.price
+                  tr.appendChild(td)
+
+                  var td=document.createElement('td')
+                  var img=document.createElement('img')
+                  img.src=p.image
+                  img.style.height='70px'
+                  td.appendChild(img)
+                  tr.appendChild(td)
+
+                  t.appendChild(tr)
+               })
+            })
+              
+         }
+        </script>
+     </body>
+</html>

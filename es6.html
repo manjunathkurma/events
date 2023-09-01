@@ -1,0 +1,43 @@
+<html>
+    <head></head>
+    <body>
+        <script>
+            //destructurain
+            var r=[20,6,53,68,57]
+             var [x,y,z,a,s]=r
+             console.log(a)
+
+             var [a,b]=[10,20]
+             var [x,z]=[b,a]
+             console.log(x,z)
+
+             //spread
+             var ar=[10,63,75,85]
+             console.log(...ar)
+             var br=['hi','bye']
+             var dr=ar.concat(br)
+             var cr=[...ar,...br,...br]
+             console.log(cr)
+
+             function add(b,...a){
+             console.log(a)
+             }
+             add(10,20,67)
+
+             var er=[92,6,27,37]
+             Object.freeze(er)
+                /// er.push(23)
+                ar=[...er,78]
+                console.log(ar)
+
+                //shallow
+                var fr=[13,4,['ra','da'],52,74,2]
+                var gr=JSON.stringify(fr)
+                console.log(gr)
+
+                var f='loki'
+                var ob={f,93:'yif',[2+3]:'md'}
+                console.log(ob)
+        </script>
+    </body>
+</html>

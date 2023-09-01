@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+        <style>
+            #u li{
+                border: 1px solid;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button onclick="g()">submit</button>
+        <ul id="u"></ul>
+        <script>
+          function g(){
+            $.get("https://restcountries.com/v3/all",function(country){
+                country.forEach(function (country){
+                    var ul=document.getElementById('u')
+                    var li=document.createElement('li')
+                    li.innerHTML='Country:'+country.name.common
+                    ul.appendChild(li)
+
+                    var li=document.createElement('li')
+                    li.innerHTML='Population:'+ country.population
+                    ul.appendChild(li)
+
+                   var li=document.createElement('li')
+                    li.innerHTML='Area:'+ country.area
+                   ul.appendChild(li)
+
+                  var li=document.createElement('li')
+                   var img=document.createElement('img')
+                   img.style.width="100"
+                   img.src=country.flags.svg
+                   li.appendChild(img)
+                   ul.appendChild(li)
+
+                })
+            })
+        }
+        </script>
+    </body>
+</html>
